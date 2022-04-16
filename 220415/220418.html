@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .red {
+      color : red;
+    }
+
+    #abc {
+      color : blue;
+    }
+  </style>
+</head>
+<body>
+  <!-- 주석 처리  단축키는 ctrl + / -->
+  <div>
+    <div></div>
+  </div>
+  <div>
+    <h4>Inline 요소</h4>
+    <span>Hello</span>
+    <span>World</span>
+    <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fm.animalplanet.co.kr%2Fnews%2F%3FartNo%3D8323&psig=AOvVaw2tb8gFqxApGNIcdUAY1vLZ&ust=1650196215838000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCOja4JHCmPcCFQAAAAAdAAAAABAI" alt="햄스터 브이">
+    <a href="https://naver.com" title="네이버로이동">NAVER</a> 
+  </div>
+  <div>
+    <h4>Box 요소 </h4>
+    <h1>제목1</h1>
+    <h2>제목2</h2>
+    <h3>제목3</h3>
+    <h4>제목4</h4>
+    <h5>제목5</h5>
+    <h6>제목6</h6>
+    <ul>
+      <li>순서가 필요없은 집합</li>
+      <li>순서가 필요없은 집합</li>
+      <li>순서가 필요없은 집합</li>
+      <li>순서가 필요없은 집합</li>
+    </ul>
+    <ol>
+      <li>순서가 필요있는 집합</li>
+      <li>순서가 필요있는 집합</li>
+      <li>순서가 필요있는 집합</li>
+      <li>순서가 필요있는 집합</li>
+    </ol>
+  </div>
+  <div>
+    <span class="red">동해물</span>과 <span id="abc">백두산</span>이 마르고 닳도록 <br/>
+    하느님이 보우하사 <span class="red">우리 나라</span> 만세 
+  </div>
+  <div>
+    <input type="text" value="입력해주세요">
+    <input type="text" placeholder="입력해주세요">
+    <input type="text" disabled>
+  </div>
+  <label for=""> 당신이 좋아하는 과일은? (중복 가능 )
+    <input type="checkbox" name="fruits" > Apple
+    <input type="checkbox" name="fruits" > Banana
+  </label>
+  <br/>
+  <label for=""> 당신이 좋아하는 과일은? (중복 불가능)
+    <input type="radio" name="fruits"> Apple
+    <input type="radio" name="fruits"> Banana
+  </label>
+  <div>
+    <table>
+      <tr>
+        <td>A</td><td>B</td>
+      </tr>
+      <tr>
+        <td>C</td><td>D</td>
+      </tr>
+    </table>
+  </div>
+  <div>
+    <div class="fruit" date-fruit-name="apple">사과</div>
+    <div class="fruit" date-fruit-name="banana">바나나</div>
+  </div>
+  <script defer>
+    const els = document.querySelector(".fruit");
+    els.forEach(el => {
+      console.log(el.dataset.fruitName);
+    })
+  </script>
+</body>
+</html>
