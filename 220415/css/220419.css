@@ -1,0 +1,137 @@
+@import url("./box.css");
+
+*{
+  font-size: 50px;
+}
+
+li {
+  background-color: antiquewhite;
+  color: red;
+}
+
+.orange {
+  color: orange;
+}
+
+#orange {
+  color: gray;
+}
+
+
+.css_link {
+  color: green;
+  margin: 20px;
+}
+
+.css_import {
+  color: yellow;
+  margin: 20px;
+}
+
+span.orange {
+  text-decoration: underline;
+}
+
+ul > .apple {
+  color: rebeccapurple;
+}
+
+ol li {
+  color: skyblue;
+}
+
+.carrot + li {
+  font-size: 100px;
+}
+
+.cucumber ~ li {
+  text-decoration: line-through;
+}
+
+.box1 {
+  width: 100px;
+  height: 100px;
+  background-color: coral;
+  transition: 1s;
+}
+
+.box1:hover {
+  width: 300px;
+  background-color: royalblue;
+}
+
+a:active {
+  color: black;
+}
+
+
+
+input:focus {
+  background-color: aqua;
+}
+
+.box2 {
+  width: 100px;
+  height: 100px;
+  background-color: coral;
+  transition: 1s;
+}
+
+.box2:focus {
+  width: 300px;
+  background-color: royalblue;
+}
+
+.fruits span:first-child {
+  color: pink;
+}
+
+/* 해당 요소가 없기때문에, 적용이 안됨 */
+.fruits div:first-child {
+  color: palevioletred;
+}
+
+.fruits h3:last-child {
+  color:darkviolet;
+}
+
+.fruits *:nth-child(2) {
+  color: darkslategrey;
+  background-color: chocolate;
+}
+
+.fruits *:not(span) {
+  text-decoration: line-through;
+}
+
+.box3::before {
+  content: "앞!!";
+}
+
+.box3::after {
+  content: "뒤!!";
+}
+
+[disabled] {
+  color: red;
+}
+
+[type="password"] {
+  color : blue;
+}
+
+.animal {
+  color: green;
+}
+
+.parent {
+  width: 300px;
+  height: 300px;
+  background-color: orange;
+}
+
+.child {
+  width: 100px;
+  height: inherit;
+  background-color: inherit;
+}
