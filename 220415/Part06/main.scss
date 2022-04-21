@@ -1,0 +1,201 @@
+// 가져오기
+@import './sub', './sub2';
+
+//변수 Variables 재활용이 가능하다
+
+$color: tomato;
+$size: 100px;
+
+.container {
+  h1 {
+    color: $color;
+    font-size: 60px;
+  }
+}
+
+.container {
+  // 자식 선택자
+  > ul {
+    li {
+      font-size: 40px;
+      .name {
+        color: royalblue;
+      }
+      .age {
+        color: orange;
+      }
+    }
+  }
+}
+
+// & 상위 선택자 참조
+
+.btn {
+  position: absolute;
+
+  &.active {
+    color: $color;
+  }
+}
+
+.list {
+  li {
+    &.last-child {
+      color: aqua;
+    }
+  }
+}
+
+.fs {
+  &-small {
+    font-size: 20px;
+  }
+  &-medium {
+    font-size: 30px;
+  }
+  &-large {
+    font-size: 40px;
+  }
+}
+
+// 네임스페이스: 이름을 통해 구분 가능한 범위를 만들어 내는 것으로 일종의 유효범위를 지정하는 방법
+
+.box {
+  // 변수는 유효범위 적용 가능 하다
+  $box-size: 40px;
+  font: {
+    weight: bold;
+    size: $box-size;
+    family: sans-serif;
+  }
+  margin: {
+    top: 10px;
+    left: 20px;
+  }
+  padding: {
+    top: 10px;
+    bottom: 40px;
+    left: 20px;
+    right: 30px;
+  }
+  border: 1px solid black;
+  height: $size;
+}
+
+.box1 {
+  border: 1px solid black;
+  width: 20px + 20px; // 40px
+  height: 30px - 10px; // 30px
+  font-size: 10px * 2; // 20px
+  margin: 30px / 2; // 적용 안됨 30px  / 는 font 에서 size / line-height 에 사용됨
+  // ( 30px / 2 ) = 15px 은 적용됨, 다른 산수연산자와 함께 사용,  혹은 변수에 할당하면 됨.
+  padding: 20px % 7; // 6px
+}
+
+.box2 {
+  background-color: cornflowerblue;
+  width: calc(100% - 200px);
+  height: 100px;
+  margin: 10px 0;
+}
+
+// 재활용
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container2 {
+  background-color: aqua;
+  @include center;
+  .item {
+    @include center;
+    background-color: chocolate;
+  }
+}
+
+// 기본값 지정도 가능하다
+
+@mixin box($size: 100px, $color: pink) {
+  width: $size;
+  height: $size;
+  background-color: $color;
+}
+
+.container3 {
+  @include box(200px);
+  margin-top: 10px;
+  .item {
+    // 키워드 인수 ( 인수가 순서대로 적용 되기때문에) 사용
+    @include box($color: green);
+  }
+}
+
+// 반복문
+
+@for $i from 1 through 5 {
+  .box3:nth-child(#{$i}) {
+    width: 100px * $i;
+  }
+}
+
+$list: orange, royalblue, yellow;
+
+@each $c in $list {
+  .box5 {
+    color: $c;
+  }
+}
+
+$map: (
+  o: orange,
+  r: royalblue,
+  y: yellow,
+);
+
+@each $key, $value in $map {
+  .box-#{$key} {
+    color: $value;
+  }
+}
+
+// 함수
+
+@function ratio($size, $ratio) {
+  @return $size * $ratio;
+}
+
+.box3 {
+  $width: 160px;
+  width: $width;
+  height: ratio($width, 2);
+  @include center;
+  background-color: gold;
+}
+
+// 색상 내장 함수
+// mix(a, b): 두 가지 색상을 섞음
+// lighten(a, b%): 해당 색상을 % 만큼 밝게함
+// darken(a, b%): 해당 색상을 % 만큼 어둡게 함
+// saturate(a, b%): 해당 색상을 % 채도를 높여줌
+// desaturate(a, b%): 해당 색상을 % 채도를 낮춰줌
+// grayscale(a): a의 회색
+// invert(a): a의 색상을 반전 시킴
+// rgba(a, b): a의 색상에 b 만큼 투명도 적용 시킴
+
+.box4 {
+  $color: royalblue;
+  width: 200px;
+  height: 100px;
+  margin: 20px;
+  border-radius: 10px;
+  background-color: $color;
+  &:hover {
+    background-color: desaturate($color, 40%);
+  }
+  &.built-in {
+    background-color: mix($color, red);
+  }
+}
