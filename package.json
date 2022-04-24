@@ -1,0 +1,28 @@
+{
+  "name": "my_til",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel 220422/part3/index.html",
+    "build": "parcel 220422/part3/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huisu-noh/My_TIL.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/huisu-noh/My_TIL/issues"
+  },
+  "homepage": "https://github.com/huisu-noh/My_TIL#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5",
+    "sass": "^1.50.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}
