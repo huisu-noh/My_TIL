@@ -181,3 +181,267 @@ const b = '1';
 console.log(a === b); // false
 console.log(a == b); // true
 ```
+
+### JS 함수
+
+##### 화살표 함수
+
+- () => {} vs function () {}
+
+```js
+const double = function (x) {
+  return x * 2;
+};
+
+console.log('double: ', double(7));
+
+const doubleArrow = (x) => x * 2;
+//const doubleArrow = x => x * 2;  () 매개변수가 1개면 생략 가능
+
+console.log('double: ', doubleArrow(7));
+```
+
+- 객체를 반환 할 시, ({name: huisu})
+
+##### IIFE 즉시실행함수 Immdiately-Invoked Function Expression
+
+```js
+const a = 7;
+function double() {
+  console.log(a * 2);
+}
+
+double();
+
+// 즉시 실행 함수 (f)() ||  (f())
+(function () {
+  console.log(a * 2);
+})();
+```
+
+##### 호이스팅 Hoistiong
+
+- 함수 선언부가 유효범위 최상당으로 끌어올려지는 현상
+
+```js
+const a = 7;
+
+double(); // TypeError: double is not a function
+
+const double = function () {
+  console.log(a * 2);
+}; // 함수 표현식은 실행 당시에 생성이 되기 때문에, 호이스팅이 안된다.
+```
+
+```js
+const a = 7;
+
+double(); // 14
+
+function double() {
+  console.log(a * 2);
+} // 함수 선언식은 바로 선언되기 때문에, 호이스팅이 가능하다
+```
+
+##### 타이머 함수
+
+- setTimeout(함수, 시간): 일정 시간 후 함수 실행
+- setInterval(함수, 시간): 시간 간격마다 함수 실행
+- clearTimeout(): 설정된 Timeout 함수를 종료
+- clearInterval(): 설정된 Interval 함수를 종료
+
+```js
+// 한번만
+const timer = setTimeout(() => {
+  console.log('huisu');
+}, 3000);
+
+const h1El = document.querySelector('h1');
+
+h1El.addEventListener('click', () => {
+  clearTimeout(timer);
+});
+
+// 계속
+const timer = setInterval(() => {
+  console.log('huisu');
+}, 3000);
+
+const h1El = document.querySelector('h1');
+
+h1El.addEventListener('click', () => {
+  clearInterval(timer);
+});
+```
+
+##### 콜백 Callback
+
+- 함수의 인수로 사용되는 함수
+
+```js
+function timeout(callback) {
+  setTimeout(() => {
+    console.log('hello');
+    callback();
+  }, 3000);
+}
+
+timeout(() => {
+  console.log('Done!');
+});
+```
+
+### JS 클래스
+
+##### 생성자 함수 prototype
+
+```js
+const huisu = {
+  firstName: 'huisu',
+  lastName: 'Noh',
+  getFullName: function () {
+    return `${this.firstName} ${this.lastName}`;
+  },
+};
+
+console.log(huisu);
+console.log(huisu.getFullName());
+
+const janghun = {
+  firstName: 'janghun',
+  lastName: 'Lee',
+  getFullName: function () {
+    return `${this.firstName} ${this.lastName}`;
+  },
+};
+
+console.log(janghun.getFullName());
+
+const hojun = {
+  firstName: 'hojun',
+  lastName: 'Noh',
+  getFullName: function () {
+    return `${this.firstName} ${this.lastName}`;
+  },
+};
+
+console.log(hojun.getFullName());
+
+// 같은 내용을 반복적으로 작성 = 비효율
+```
+
+```js
+function User(first, last) {
+  this.firstName = first;
+  this.lastName = last;
+}
+
+User.prototype.getFullName = function () {
+  return `${this.firstName} ${this.lastName}`;
+};
+
+const huisu = new User('huisu', 'Noh'); // new f (): 생성자 함수
+const janghun = new User('jang', 'Lee');
+const hojun = new User('hojun', 'Noh');
+
+console.log(huisu); // 인스턴스
+console.log(janghun);
+console.log(hojun);
+
+console.log(huisu.getFullName());
+console.log(janghun.getFullName());
+console.log(hojun.getFullName());
+```
+
+##### ES6 Classes
+
+```js
+class User {
+  constructor(first, last) {
+    this.firstName = first;
+    this.lastName = last;
+  }
+  getFullName() {
+    return `${this.firstName} ${this.lastName}`;
+  }
+}
+```
+
+##### this
+
+- 일반(Normal) 함수는 호출 위치에서 따라 this 정의!
+- 화살표(Arrow) 함수는 자신이 선언된 함수 범위에서 this 정의!
+
+- 일반 함수를 써야 하는 예시
+
+```js
+const huisu = {
+  name: 'huisu',
+  normal: function () {
+    console.log(this.name);
+  },
+  arrow: () => {
+    console.log(this.name);
+  },
+};
+
+huisu.normal();
+huisu.arrow(); // undefined
+```
+
+- 화살표 함수를 써야 하는 예시
+
+```js
+const timer = {
+  name: 'huisu!',
+  timeout: function () {
+    setTimeout(function () {
+      console.log(this.name);
+    }, 2000);
+  },
+};
+
+timer.timeout(); // undefined
+
+const timer = {
+  name: 'huisu!',
+  timeout: function () {
+    setTimeout(() => {
+      console.log(this.name);
+    }, 2000);
+  },
+};
+
+timer.timeout(); // huisu!
+```
+
+##### 상속 (확장)
+
+```js
+class Vehicle {
+  constructor(name, wheel) {
+    this.name = name;
+    this.wheel = wheel;
+  }
+}
+
+const MyVehicle = new Vehicle('운송수단', 2);
+console.log(MyVehicle);
+
+// extends 확장, 상속
+class Bicycle extends Vehicle {
+  constructor(name, wheel) {
+    super(name, wheel);
+  }
+}
+
+class Car extends Vehicle {
+  constructor(name, wheel, license) {
+    super(name, wheel);
+    this.license = license;
+  }
+}
+
+console.log(new Bicycle('삼천리', 2));
+console.log(new Car('기아', 4, '필요하다'));
+```
