@@ -17,8 +17,8 @@
 - 일치하는 값이 없으면 - 1을 반환합니다.
 
 ```js
-const result = 'Hello world!'.indexOf('world');
-const result2 = 'Hello world!'.indexOf('huisu');
+const result = "Hello world!".indexOf("world");
+const result2 = "Hello world!".indexOf("huisu");
 console.log(result); // 6
 console.log(result2); // -1
 ```
@@ -26,10 +26,10 @@ console.log(result2); // -1
 - length() 메소드는 문자열의 길이를 측정하여 숫자로 반환한다
 
 ```js
-const str = '01 23';
+const str = "01 23";
 console.log(str.length); // 5
-const str2 = 'Hello world!';
-console.log(str2.indexOf('huisu') !== -1); // false
+const str2 = "Hello world!";
+console.log(str2.indexOf("huisu") !== -1); // false
 ```
 
 - slice() 메소드는 문자열의 일부를 추출하면서 새로운 문자열을 반환한다.
@@ -44,21 +44,21 @@ console.log(str2.slice(6, 11)); // world
 - replace() 메서드는 어떤 패턴에 일치하는 일부 또는 모든 부분이 교체된 새로운 문자열을 반환
 
 ```js
-console.log(str2.replace('world', 'huisu')); // Hello huisu
-console.log(str2.replace(' world!', '')); // Hello
+console.log(str2.replace("world", "huisu")); // Hello huisu
+console.log(str2.replace(" world!", "")); // Hello
 ```
 
 - match() 메서드는 문자열이 정규식과 매치되는 부분을 검색
 
 ```js
-const email = 'fatcam@gmail.com';
+const email = "fatcam@gmail.com";
 console.log(email.match(/.+(?=@)/)[0]); // fatcam
 ```
 
 - trim() 메서드는 문자열 양 끝의 공백을 제거합니다.
 
 ```js
-const str3 = '        Hello world   ';
+const str3 = "        Hello world   ";
 console.log(str3.trim());
 ```
 
@@ -122,7 +122,7 @@ Math.random(); // 0.2545875
 
 ```js
 const numbers = [1, 2, 3, 4];
-const fruits = ['Apple', 'Banana', 'Cherry'];
+const fruits = ["Apple", "Banana", "Cherry"];
 
 numbers.length; // 4
 fruits.length; // 3
@@ -141,7 +141,7 @@ fruits.length; // 3
 
 ```js
 const numbers = [1, 2, 3, 4];
-const fruits = ['Apple', 'Banana', 'Cherry'];
+const fruits = ["Apple", "Banana", "Cherry"];
 
 console.log(numbers.concat(fruits));
 // [1, 2, 3, 4, 'Apple', 'Banana', 'Cherry']
@@ -200,7 +200,7 @@ console.log(b); // 1
 
 ```js
 const a = numbers.includes(3); // true
-const b = fruits.includes('huisu'); // false
+const b = fruits.includes("huisu"); // false
 ```
 
 ###### 자주 사용되는 Array Methods 중 원본이 수정 됨
@@ -228,8 +228,8 @@ fruits.reverse(); // ['Cherry', 'Banana', 'Apple']
 numbers.splice(2, 1); // [1, 2, 4]
 numbers.splice(2, 1, 9); // [1, 2, 9, 4]
 
-const fruits = ['Apple', 'Banana', 'Cherry'];
-fruits.splice(2, 0, 'orange'); // ['Apple', 'Banana', 'orange', 'Cherry']
+const fruits = ["Apple", "Banana", "Cherry"];
+fruits.splice(2, 0, "orange"); // ['Apple', 'Banana', 'orange', 'Cherry']
 ```
 
 ##### 객체
@@ -241,13 +241,13 @@ fruits.splice(2, 0, 'orange'); // ['Apple', 'Banana', 'orange', 'Cherry']
 ```js
 const userAge = {
   // key: value
-  name: 'huisu',
+  name: "huisu",
   age: 70,
 };
 
 const userEmail = {
-  name: 'huisu',
-  email: 'fatcam@gamil.com',
+  name: "huisu",
+  email: "fatcam@gamil.com",
 };
 
 const target = Object.assign(userAge, userEmail);
@@ -267,15 +267,15 @@ console.log(a === b); // false
 ```js
 const user = {
   // key: value
-  name: 'huisu',
+  name: "huisu",
   age: 70,
-  email: 'fatcam@gamil.com',
+  email: "fatcam@gamil.com",
 };
 
 const keys = Object.keys(user);
 console.log(keys); // ['name', 'age', 'email']
 
-console.log(user['email']); // fatcam@gamil.com
+console.log(user["email"]); // fatcam@gamil.com
 
 const values = keys.map((key) => user[key]);
 console.log(values); // ['huisu', 70, 'fatcam@gamil.com']
@@ -288,12 +288,12 @@ console.log(values); // ['huisu', 70, 'fatcam@gamil.com']
 ```js
 // Object
 const user = {
-  name: 'huisu',
+  name: "huisu",
   age: 70,
-  email: 'fatcam@gamil.com',
+  email: "fatcam@gamil.com",
 };
 
-const { name: Myname, age, email, address = 'Korea' } = user;
+const { name: Myname, age, email, address = "Korea" } = user;
 // E.g, user.address
 //const name = user.name;
 //const name = user['name']
@@ -301,7 +301,7 @@ const { name: Myname, age, email, address = 'Korea' } = user;
 console.log(Myname, age, email, address); // huisu 70 fatcam@gamil.com Korea
 
 // Array
-const fruits = ['Apple', 'Banana', 'Cherry'];
+const fruits = ["Apple", "Banana", "Cherry"];
 const [, , a] = fruits;
 console.log(a); // Cherry
 ```
@@ -311,7 +311,7 @@ console.log(a); // Cherry
 ##### 전개 연산자 Spread
 
 ```js
-const fruits = ['Apple', 'Banana', 'Cherry', 'orange'];
+const fruits = ["Apple", "Banana", "Cherry", "orange"];
 
 console.log(...fruits); // Apple Banana Cherry orange
 
@@ -331,10 +331,172 @@ console.log(toObj(...fruits)); //{a: 'Apple', b: 'Banana', c: Array(2)}
 
 ##### 가져오기, 내보내기
 
+- Import: 가져오기
+- Default export: 기본으로 내보내기 (이름을 지정할 필요가 없음)
+- Named export: 이름을 지정 후 내보내기
+
+```js
+// Named export (getRandom.js)
+// 여러번 사용이 가능하다
+
+export function random() {
+  return Math.floor(Math.random() * 10);
+}
+
+export const user = {
+  name: "huisu",
+  age: 80,
+};
+
+// 같이 사용 가능
+export default 123;
+```
+
+```js
+// default 는 한번만 사용 가능 (getType.js)
+export default function (data) {
+  return Object.prototype.toString.call(data).slice(8, -1);
+}
+```
+
+```js
+// main.js
+import _ from "lodash"; // From 'node_modules!'
+import getType from "../part3/getType";
+//import { random, user as huisu } from "../part3/getRandom";
+// 한번에 가져올 경우
+import * as R from "../part3/getRandom";
+
+console.log(_.camelCase("the hello world"));
+console.log(getType([1, 2, 3]));
+//console.log(random(), random());
+console.log(R); // {default: 123, user: {…}, __esModule: true, random: ƒ}
+```
+
 ##### Lodash 사용법
 
-##### JSON
+<a href="https://lodash.com/" target="_blank">Lodash</a>
 
-##### Storage
+- .uniqBy(배열, 속성이름) 중복된 데이터를 제거 후 반환
+  - 합친 후 이미 중복이 발생한 경우 사용
+- .unionBy(배열1, 배열2, 속성이름) 중복된 데이터를 제거 후 반환
+  - 합치기 전 중복이 발생되지 않은 2개 이상의 배열일 때 사용
+
+```js
+const UserA = [
+  { userId: "1", name: "huisu" },
+  { userId: "2", name: "janghun" },
+];
+
+const UserB = [
+  { userId: "1", name: "huisu" },
+  { userId: "3", name: "Oksun" },
+];
+
+const UserC = UserA.concat(UserB);
+console.log("concat", UserC);
+console.log("uniqBy", _.uniqBy(UserC, "userId"));
+
+const UserD = _.unionBy(UserA, UserB, "userId");
+console.log("unionBy", UserD);
+```
+
+- .find(배열, 아이템) 해당되는 데이터를 찾아서 반환
+- .findIndex(배열, 아이템) 해당되는 데이터가 위치한 index 번호를 반환
+- .remove(배열, 아이템) 해당되는 요소를 찾아서 제거 후 반환
+
+```js
+const users = [
+  { userId: "1", name: "huisu" },
+  { userId: "2", name: "janghun" },
+  { userId: "3", name: "Oksun" },
+];
+
+const foundUser = _.find(users, { name: "huisu" }); //{userId: '1', name: 'huisu'}
+const foundUserIndex = _.findIndex(users, { name: "huisu" }); // 0
+
+_.remove(users, { neme: "huisu" }); // [{…}, {…}, {…}]
+```
+
+##### JSON 자바스크립트의 객체 표기법 JavaScript Object Notation
+
+<a href="https://ko.wikipedia.org/wiki/JSON" target="_blank">위키백과</a>
+
+> JSON의 공식 인터넷 미디어 타입은 application/json이며, JSON의 파일 확장자는 .json이다.
+> 문자열(String): 0개 이상의 유니코드 문자들의 연속. 문자열은 큰 따옴표(")로 구분하며 역슬래시 이스케이프 문법을 지원한다.
+> 한 가지의 데이터 타입을 가진다.
+
+```json
+{
+  "string": "huisu",
+  "number": 123,
+  "boolean": true,
+  "null": null,
+  "object": {},
+  "array": []
+}
+```
+
+```js
+import myData from "./MyData.json";
+// 문자화
+const str = JSON.stringify(user);
+// string , {"name":"huisu","age":70,"emails":["dlkwjlkfjld@naver.com","dlejlejlw@naver.com"]}
+
+// 객체화
+const obj = JSON.parse(str);
+// {name: 'huisu', age: 70, emails: Array(2)}
+```
+
+##### Storage 데이터를 저장하는 장소
+
+- Window.localStorage
+  > localStorage 읽기 전용 속성을 사용하면 Document 출처의 Storage 객체에 접근할 수 있습니다. 저장한 데이터는 브라우저 세션 간에 공유, 데이터는 만료되지 않음
+  > sessionStorage의 데이터는 페이지 세션이 끝날 때, 즉 페이지를 닫을 때 사라진다.
+- localStorage.setItem('key', 'value') 데이터 저장
+- localStorage.getItem('key') 데이터 항목 읽기
+- localStorage.removeItem('key') 데이터 삭제
+- localStorage.clear() 항목 전체 제거
+
+```js
+const user = {
+  name: "huisu",
+  age: 70,
+  emails: ["dlkwjlkfjld@naver.com", "dlejlejlw@naver.com"],
+};
+
+localStorage.setItem("user", user);
+user2 = JSON.stringify(user);
+localStorage.setItem("user2", user2);
+```
+
+<img src ="./images/JSON.PNG">
 
 ##### OMDb API
+
+- Query String
+  - 주소? 속성=값&속성=값&속성=값
+  - 설치 방법
+    > https://github.com/axios/axios
+    > npm install axios
+
+```html
+<h1>hello</h1>
+<img src="" alt="" width="200" />
+```
+
+```js
+import axios from "axios";
+
+function fetchMovies() {
+  axios.get("https://www.omdbapi.com/?apikey=7035c60c&s=frozen").then((res) => {
+    console.log(res);
+    const h1El = document.querySelector("h1");
+    const imgEl = document.querySelector("img");
+    h1El.innerText = res.data.Search[0].Title;
+    imgEl.src = res.data.Search[0].Poster;
+  });
+}
+
+fetchMovies();
+```
