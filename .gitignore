@@ -6,6 +6,7 @@
 .cache/
 dist/
 node_modules/
+.prettierrc
 
 # User-specific files
 *.rsuser
