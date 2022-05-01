@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "parcel 220422/part3/index.html",
-    "build": "parcel 220422/part3/index.html"
+    "dev": "parcel 220422/REGEXP/index.html",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
@@ -20,9 +20,12 @@
   "homepage": "https://github.com/huisu-noh/My_TIL#readme",
   "devDependencies": {
     "parcel-bundler": "^1.12.5",
-    "sass": "^1.50.1"
+    "sass": "^1.50.1",
+    "typescript": "^4.6.4"
   },
   "dependencies": {
-    "lodash": "^4.17.21"
+    "axios": "^0.27.2",
+    "lodash": "^4.17.21",
+    "typecript": "^0.0.1-security"
   }
 }
