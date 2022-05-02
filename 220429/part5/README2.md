@@ -87,4 +87,92 @@ let another: PersonTuple = ["Anna", 24];
 type EatType = (food: string) => void;
 ```
 
+## TypeScript Compiler
+
 ## Part 5 Ch. 04
+
+### tsconfig schema
+
+> http://json.schemastore.org/tsconfig
+
+#### compileOnSave
+
+```json
+{
+  "compileOnSave": true, // default false
+  "compilerOptions": {}
+}
+```
+
+#### extends
+
+```json
+{
+  "extends": "./base.json",
+  "compilerOptions": {}
+}
+```
+
+```json
+//base.json
+{
+  "compilerOptions": {
+    "strict": true
+  }
+}
+```
+
+```
+npm install --save-dev @tscongfig/deno
+```
+
+#### file, include, exclude
+
+- 셋다 설정이 없으면, 전부다 컴파일
+- files
+  - 상대 혹은 절대 경로의 리스트 배열입니다.
+  - exclude 보다 우선 적용
+- include, exclude
+  - glob 패턴 (마치 gitignore)
+  - include
+    - exclude 가 더 우선 적용
+    - - 같은 걸 사용하면, .ts/ .tsx / .d.ts만 include (allowJS)
+- exclude
+  - 설정 안하면 4가지 (node_modules, brower_components, jspm_packages, <outDir>)를 default로 제외한다
+  - <outDir> 은 항상 제외합니다 (include에 있어도)
+
+#### compile options
+
+##### typeRoots, types
+
+<img src="./imgs/types.PNG">
+
+##### target, lib
+
+<img src="./imgs/types2.PNG">
+
+##### outDir, outfile, rootDir
+
+<img src="./imgs/types3.PNG">
+
+##### strict
+
+- 엄격하게 확인하는 타입의 옵션을 활성화함
+
+  <img src="./imgs/types4.PNG">
+
+- 옵션의 종류
+
+<img src="./imgs/types5.PNG">
+
+<img src="./imgs/types7.PNG">
+
+<img src="./imgs/types10.PNG">
+
+<img src="./imgs/types11.PNG">
+
+<img src="./imgs/types12.PNG">
+
+<img src="./imgs/types13.PNG">
+
+<img src="./imgs/types14.PNG">
