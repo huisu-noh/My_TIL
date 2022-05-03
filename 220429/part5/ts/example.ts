@@ -1,8 +1,16 @@
-class Person {
-  name: string = "huisu";
-  age: number = 31;
+abstract class AbstractPerson {
+  protected _name: string = "soo";
+
+  abstract setName(name: string): void;
 }
 
-const p1 = new Person();
+// new AbstractPerson()
 
-console.log(p1);
+class Person extends AbstractPerson {
+  setName(name: string): void {
+    this._name = name;
+  }
+}
+
+const p = new Person();
+p.setName();
