@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "parcel 220422/REGEXP/index.html",
-    "build": "tsc"
+    "dev": "webpack-dev-server --mode development",
+    "build": "webpack --mode production"
   },
   "repository": {
     "type": "git",
@@ -19,9 +19,13 @@
   },
   "homepage": "https://github.com/huisu-noh/My_TIL#readme",
   "devDependencies": {
+    "html-webpack-plugin": "^5.5.0",
     "parcel-bundler": "^1.12.5",
     "sass": "^1.50.1",
-    "typescript": "^4.6.4"
+    "typescript": "^4.6.4",
+    "webpack": "^5.72.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.0.0-rc.1"
   },
   "dependencies": {
     "axios": "^0.27.2",
