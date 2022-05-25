@@ -92,3 +92,27 @@ function DetailPage() {
 
 export default DetailPage;
 ```
+
+- `_app.js` : 특수 파일
+  - pages 폴더에서 바로 쓸 수 있다.
+  - 파일이 없으면 직접 만들면 된다.
+  - 마치 최상위 컴포넌트 같은 것이다.
+  - NextJS 가 렌더링하는 최상위 컴포넌트처럼 작동한다.
+
+```js
+import Layout from "../components/layout/Layout";
+import "../styles/globals.css";
+
+function MyApp({ Component, pageProps }) {
+  return (
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
+  );
+}
+
+export default MyApp;
+```
+
+- 이렇게 하면 여러 페이지 콘텐츠가 이 Layout 컴포넌트 안에 들어가게 된다.
+- 각각의 페이지 콘텐츠에 설정할 필요가 없다.
