@@ -81,3 +81,28 @@ export default HomePage;
 - `npm run build` 생성하기
 - 터미널에 관련 내용이 나옴
 - `● (SSG) automatically generated as static HTML + JSON (uses getStaticProps)`
+
+### fallback
+
+- _nextJS에게 paths 배열이 모든 지원되는 매개변수를 저장할지 아니면 일부만 저장할지 알려줌_
+- 동적 페이지를 생성하는데 필요한 함수, nextJS 에게 어떤 동적 매개변수 밸류의 어떤 페이지가 generator 되어야 하는지 알려준다.
+
+```js
+export async function getStaticPaths() {
+  return {
+    fallback: false,
+    paths: [
+      {
+        params: {
+          meetupId: "m1",
+        },
+      },
+      {
+        params: {
+          meetupId: "m2",
+        },
+      },
+    ],
+  };
+}
+```
